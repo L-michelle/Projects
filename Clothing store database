@@ -1,3 +1,4 @@
+Here I have created a table from the database of clothes in a store.
 CREATE TABLE clothes (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER, price INTEGER);
 
 
