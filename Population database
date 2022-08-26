@@ -228,14 +228,14 @@ FROM countries;
 SELECT name, MAX(population)
 FROM countries;
 
-I then looked at countries that were above or below the average population for a country.
-SELECT name, population,
+I then looked at the number of countries that were above or below the average population for a country.
+SELECT COUNT(*),
 CASE
 WHEN population>42000000 THEN "above average population"
 WHEN population<42000000 THEN "below average population"
-END as "above or below average"
+END as "Above_or_below_average"
 FROM countries
-GROUP BY population;
+GROUP BY Above_or_below_average;
 
 I then compared the rate of change relative to the population of each country. 
 SELECT * FROM countries where percent_one_year_change>0.5 AND population >42000000;
