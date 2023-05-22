@@ -46,11 +46,11 @@ Welcome to my portfolio! This repository contains some projects that I have exec
     2. The average revenue from users in the NY-NJ area is different from users in the other regions.
    
 # [Gym Churn Prediction Using Machine Learning](https://github.com/L-michelle/Projects/tree/main/Gym%20Churn%20Prediction)
-* predict the probability of churn (for the upcoming month) for each customer
-* Draw up typical user portraits & select the most outstanding groups and describe their main features
-* Analyze the factors that impact churn most
-* Identify target groups
-* Suggest measures to cut churn
+* Predicted the probability of churn (for the upcoming month) for each customer
+* Drew up typical user portraits & selected the most outstanding groups and described their main features
+* Analyzed the factors that impact churn the most
+* Identified target groups
+* Suggested measures to cut churn
 
 # [Trending YouTube Video Dashboard](https://github.com/L-michelle/Projects-/tree/main/Trending%20YouTube%20Videos%20Dashboard)
 * Produced a dashboard using Tableau to visualize the trending videos by date, region, and category. 
