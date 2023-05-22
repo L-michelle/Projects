@@ -22,6 +22,12 @@ Welcome to my portfolio! This repository contains some projects that I have exec
     2. On Monday mornings, Springfield and Shelbyville residents listen to different genres. This is also true for Friday evenings.
     3. Springfield and Shelbyville listeners have different preferences. In Springfield, they prefer pop, while Shelbyville has more rap fans.
 
+# [Food Product Analysis (A/A/B Testing and Funnel Analysis](https://github.com/L-michelle/Projects/tree/main/Food%20Product%20Analysis)
+* Studied food products app 
+* prepared the data for EDA (removed duplicates and changed data types)
+* Studied sales funnel
+* Performed A/A/B testing to determine whether or not to change the font type 
+
 # [Online Store A/B Testing and Analysis](https://github.com/L-michelle/Projects-/tree/main/Online%20Store%20Analysis)
 * Compiled a list of hypotheses that may help boost revenue for the online store.
 * Prioritized the hypotheses using ICE and RICE methods. 
