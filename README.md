@@ -2,6 +2,14 @@
 # Michelle Le Data Analytics Portfolio
 Welcome to my portfolio! This repository contains some projects that I have executed. Please feel free to look around let me know if you have any questions!
 
+# [Loyalty Program Analysis]
+*Cleaned and pre-processed data for exploratory data analysis.
+*Examined total revenue of 30 shops to determine if loyalty program boosted revenue.
+*Conducted cohort analysis.
+*Used statistical testing to prove that the loyalty program did not increase revenue.
+*Presented findings and recommendations in Powerpoint presentation.
+*Presented findings in Tableau Dashboard. 
+
 # [Instacart Analysis](https://github.com/L-michelle/Projects-/tree/main/Instacart%20Analysis)
 * This analysis contains some insights on shoppers from Instacart from 2017. 
 * Removed implicit duplicates, performed EDA, gathered insights via visualization. 
