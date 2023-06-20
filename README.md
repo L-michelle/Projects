@@ -2,7 +2,7 @@
 # Michelle Le Data Analytics Portfolio
 Welcome to my portfolio! This repository contains some projects that I have executed. Please feel free to look around let me know if you have any questions!
 
-# [Loyalty Program Analysis]
+# [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
 *Cleaned and pre-processed data for exploratory data analysis.
 *Examined total revenue of 30 shops to determine if loyalty program boosted revenue.
 *Conducted cohort analysis.
