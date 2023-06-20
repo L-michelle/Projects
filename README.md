@@ -61,4 +61,5 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Suggested measures to cut churn
 
 # [Trending YouTube Video Dashboard](https://github.com/L-michelle/Projects-/tree/main/Trending%20YouTube%20Videos%20Dashboard)
-* Produced a dashboard using Tableau to visualize the trending videos by date, region, and category. 
+* Produced a dashboard using Tableau to visualize the trending videos by date, region, and category.
+* *Produced and presented findings in Powerpoint presentation. 
