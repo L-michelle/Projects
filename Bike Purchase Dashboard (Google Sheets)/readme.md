@@ -9,15 +9,15 @@
 
 Preview of Dashboard:
 
-![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/chrome_DnXcn5jKBp.png)
+![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Dashboard.png)
 
 EDA:
 
-![EDA](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/chrome_camPA19G74.png)
+![EDA](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Bike%20Purchases%20EDA.png)
 
 Pivot Tables:
 
-![Pivot table1](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/chrome_0N1MCy3eeT.png)
-![Pivot table2](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/chrome_cIJgNc8QXs.png)
-![Pivot table3](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/chrome_pA9V9kaE4b.png)
+![Pivot table1](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Pivot%20Table.png)
+![Pivot table2](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Pivot%20Table2.png)
+![Pivot table3](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Pivot%20table3.png)
 
