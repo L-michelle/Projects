@@ -13,7 +13,7 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 
 Preview of Dashboard:
 
-![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Dashboard.png)
+![](https://github.com/L-michelle/Projects/blob/main/images/Dashboard.png)
 
 # [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
 * Cleaned and pre-processed data for exploratory data analysis.
