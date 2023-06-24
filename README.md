@@ -11,6 +11,10 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Concluded that more males purchased bikes and high majority of the customer purchases were middle-aged.
 * Concluded that highest number of customers who purchased have a bachelor's degree and are in a professional occupation.
 
+Preview of Dashboard:
+
+![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/chrome_DnXcn5jKBp.png)
+
 # [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
 * Cleaned and pre-processed data for exploratory data analysis.
 * Examined total revenue of 30 shops to determine if loyalty program boosted revenue.
