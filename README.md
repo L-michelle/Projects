@@ -2,6 +2,15 @@
 # Michelle Le Data Analytics Portfolio
 Welcome to my portfolio! This repository contains some projects that I have executed. Please feel free to look around let me know if you have any questions!
 
+# [Bike Purchase Dashboard (Google Sheets)](https://github.com/L-michelle/Projects/tree/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets))
+* Performed data cleaning and removed duplicates. 
+* Performed quick analysis and stats of data.
+* Created pivot tables to better visualize data.
+* Concluded that male income was generally larger than women's.
+* Concluded that majority of commute per customer was 0-1 miles and highest in Europe.
+* Concluded that more males purchased bikes and high majority of the customer purchases were middle-aged.
+* Concluded that highest number of customers who purchased have a bachelor's degree and are in a professional occupation.
+
 # [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
 * Cleaned and pre-processed data for exploratory data analysis.
 * Examined total revenue of 30 shops to determine if loyalty program boosted revenue.
