@@ -13,7 +13,7 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 
 Preview of Dashboard:
 
-![](https://github.com/L-michelle/Projects/blob/main/images/Dashboard.png)
+![](/Projects/docs/assets/Dashboard.png)
 
 # [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
 * Cleaned and pre-processed data for exploratory data analysis.
