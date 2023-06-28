@@ -44,4 +44,4 @@ After talking to the managers and database administrators, I've drawn up brief t
 - Data update interval: once every 24 hours, at midnight UTC
 
 ### Link to Dashboard:
-[Trending YouTube Video Dashboard](https://public.tableau.com/views/YouTubeVideoTrendDashboard/Dashboard1?:language=en-US&publish=yes&:display_count=n&:origin=viz_share_link)
+[Trending YouTube Video Dashboard](https://public.tableau.com/views/YouTubeVideoTrendDashboard2/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link)
