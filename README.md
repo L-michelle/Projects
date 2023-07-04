@@ -2,25 +2,10 @@
 # Michelle Le Data Analytics Portfolio
 Welcome to my portfolio! This repository contains some projects that I have executed. Please feel free to look around let me know if you have any questions!
 
-# [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
-* Cleaned and pre-processed data for exploratory data analysis.
-* Examined total revenue of 30 shops to determine if loyalty program boosted revenue.
-* Conducted cohort analysis.
-* Used statistical testing to prove that the loyalty program did not increase revenue.
-* Presented findings and recommendations in Powerpoint presentation.
-* Presented findings in Tableau Dashboard. 
-
 # [Instacart Analysis](https://github.com/L-michelle/Projects-/tree/main/Instacart%20Analysis)
 * This analysis contains some insights on shoppers from Instacart from 2017. 
 * Removed implicit duplicates, performed EDA, gathered insights via visualization. 
 * Concluded which products are most popular, the days and hours of the week that people tend to order, the distribution of the number of orders per customer, and the proportion of reorders for products.
-
-# [Rideshare Analysis (SQL)](https://github.com/L-michelle/Projects/tree/main/Rideshare%20Analysis%20(SQL))
-* Parsed data from website to obtain Chicago weather in November of 2017
-* Analyzed data using SQL and python to find patterns 
-* Used EDA to understand passenger preferences and the impact of external factors on rides such as weather
-* Tested hypothesis weather the average duration of rides from the Loop to O'Hare International Airport differs on rainy Saturdays
-
 
 # [Music App Analysis](https://github.com/L-michelle/Projects-/tree/main/Music)
 * Compared music preferences of two cities (Springfield and Shelbyville). We'll study real Yandex.Music data to test the hypotheses below and compare user behavior for these two cities.
@@ -30,18 +15,11 @@ Welcome to my portfolio! This repository contains some projects that I have exec
     2. On Monday mornings, Springfield and Shelbyville residents listen to different genres. This is also true for Friday evenings.
     3. Springfield and Shelbyville listeners have different preferences. In Springfield, they prefer pop, while Shelbyville has more rap fans.
 
-# [Food Product Analysis (A/A/B Testing and Funnel Analysis](https://github.com/L-michelle/Projects/tree/main/Food%20Product%20Analysis)
-* Studied food products app 
-* prepared the data for EDA (removed duplicates and changed data types)
-* Studied sales funnel
-* Performed A/A/B testing to determine whether or not to change the font type 
-
-# [Online Store A/B Testing and Analysis](https://github.com/L-michelle/Projects-/tree/main/Online%20Store%20Analysis)
-* Compiled a list of hypotheses that may help boost revenue for the online store.
-* Prioritized the hypotheses using ICE and RICE methods. 
-* Removed duplicates in both testing groups and determined correct dates for analysis.
-* Compared cumulative revenue, average purchase size, and conversion for both testing groups. 
-* Launched an A/B test 
+# [Rideshare Analysis (SQL)](https://github.com/L-michelle/Projects/tree/main/Rideshare%20Analysis%20(SQL))
+* Parsed data from website to obtain Chicago weather in November of 2017
+* Analyzed data using SQL and python to find patterns 
+* Used EDA to understand passenger preferences and the impact of external factors on rides such as weather
+* Tested hypothesis weather the average duration of rides from the Loop to O'Hare International Airport differs on rainy Saturdays
 
 # [Phone Plan Analysis](https://github.com/L-michelle/Projects-/tree/main/Phone%20Analysis)
 * Determined which phone plan produced more revenue to adjust the advertising budget.
@@ -52,7 +30,13 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Tested two hypothesis:
     1. The average revenue from users of the Ultimate and Surf plan differs.
     2. The average revenue from users in the NY-NJ area is different from users in the other regions.
-   
+
+# [Food Product Analysis (A/A/B Testing and Funnel Analysis](https://github.com/L-michelle/Projects/tree/main/Food%20Product%20Analysis)
+* Studied food products app 
+* prepared the data for EDA (removed duplicates and changed data types)
+* Studied sales funnel
+* Performed A/A/B testing to determine whether or not to change the font type
+
 # [Gym Churn Prediction Using Machine Learning](https://github.com/L-michelle/Projects/tree/main/Gym%20Churn%20Prediction)
 * Predicted the probability of churn (for the upcoming month) for each customer
 * Drew up typical user portraits & selected the most outstanding groups and described their main features
@@ -60,9 +44,20 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Identified target groups
 * Suggested measures to cut churn
 
-# [Trending YouTube Video Dashboard](https://github.com/L-michelle/Projects-/tree/main/Trending%20YouTube%20Videos%20Dashboard)
-* Produced a dashboard using Tableau to visualize the trending videos by date, region, and category.
-* Produced and presented findings in Powerpoint presentation.
+# [Loyalty Program Analysis](https://github.com/L-michelle/Projects/blob/main/Loyalty%20Program%20Analysis/readme.md)
+* Cleaned and pre-processed data for exploratory data analysis.
+* Examined total revenue of 30 shops to determine if loyalty program boosted revenue.
+* Conducted cohort analysis.
+* Used statistical testing to prove that the loyalty program did not increase revenue.
+* Presented findings and recommendations in Powerpoint presentation.
+* Presented findings in Tableau Dashboard. 
+
+# [Online Store A/B Testing and Analysis](https://github.com/L-michelle/Projects-/tree/main/Online%20Store%20Analysis)
+* Compiled a list of hypotheses that may help boost revenue for the online store.
+* Prioritized the hypotheses using ICE and RICE methods. 
+* Removed duplicates in both testing groups and determined correct dates for analysis.
+* Compared cumulative revenue, average purchase size, and conversion for both testing groups. 
+* Launched an A/B test 
 
 # [Bike Purchase Dashboard (Google Sheets)](https://github.com/L-michelle/Projects/tree/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets))
 * Performed data cleaning and removed duplicates. 
@@ -76,3 +71,8 @@ Welcome to my portfolio! This repository contains some projects that I have exec
   Dashboard Preview:
 
   ![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Dashboard.png)
+
+  
+# [Trending YouTube Video Dashboard](https://github.com/L-michelle/Projects-/tree/main/Trending%20YouTube%20Videos%20Dashboard)
+* Produced a dashboard using Tableau to visualize the trending videos by date, region, and category.
+* Produced and presented findings in Powerpoint presentation.
