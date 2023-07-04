@@ -1,4 +1,4 @@
-## Introduction <a id='intro'></a>
+## Music App Analysis <a id='intro'></a>
 In this project, we will compare the music preferences of the cities of Springfield and Shelbyville. We'll study real Yandex.Music data to test the hypotheses below and compare user behavior for these two cities.
 
 ### Goal: 
