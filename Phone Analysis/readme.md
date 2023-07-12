@@ -6,3 +6,11 @@ You are going to carry out a preliminary analysis of the plans based on a relati
 
 This project analyzes two different prepaid plans for Megaline- Surf and Ultimate. The goal is to find which plan brings in the most revenue so that Megaline can adjust the advertising budget. 
 First, we will preprocess the data sets, analyze the users' behavior, then determine which plan brings in more revenue. 
+
+### Workbook Preview: <br>
+![distribution](https://github.com/L-michelle/Projects/blob/main/Phone%20Analysis/images/distribution%20of%20calls.png)
+![groupby](https://github.com/L-michelle/Projects/blob/main/Phone%20Analysis/images/groupby.png)
+![rev fx](https://github.com/L-michelle/Projects/blob/main/Phone%20Analysis/images/rev%20fx.png)
+![boxplot](https://github.com/L-michelle/Projects/blob/main/Phone%20Analysis/images/boxplot.png)
+
+

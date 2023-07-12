@@ -43,5 +43,8 @@ After talking to the managers and database administrators, I've drawn up brief t
 - The table is stored in the `data-analyst-youtube-data.` database, which was created especially for this project's needs
 - Data update interval: once every 24 hours, at midnight UTC
 
-### Link to Dashboard:
+### DashBoard Preview:<br>
+![dashboard](https://github.com/L-michelle/Projects/blob/main/Trending%20YouTube%20Videos%20Dashboard/images/Dashboard.png)
+
+### Link to Dashboard:<br>
 [Trending YouTube Video Dashboard](https://public.tableau.com/views/YouTubeVideoTrendDashboard2/Dashboard1?:language=en-US&:display_count=n&:origin=viz_share_link)
