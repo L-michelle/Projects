@@ -1,6 +1,6 @@
 
 #We will parse the data on weather in Chicago in November 2017 from the website using python first:
-#[https://practicum-content.s3.us-west-1.amazonaws.com/data-analyst-eng/moved_chicago_weather_2017.html)
+#[https://practicum-content.s3.us-west-1.amazonaws.com/data-analyst-eng/moved_chicago_weather_2017.html]
 #The name of the DataFrame should be weather_records, and it should be specified when you search: attrs={"id": "weather_records"}
 import pandas as pd
 import requests 
