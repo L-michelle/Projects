@@ -59,7 +59,7 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Compared cumulative revenue, average purchase size, and conversion for both testing groups. 
 * Launched an A/B test 
 
-![Student Bootcamp Analysis]
+# [Student Bootcamp Analysis](https://github.com/L-michelle/Projects/tree/main/Student%20Bootcamp%20Analysis)
 * Analyzed Student 32 during time at bootcamp. 
 * Looked at overall activity and session throughout the cohort. 
 * Made visualizations depicting activity.  
