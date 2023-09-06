@@ -75,9 +75,15 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Concluded that highest number of customers who purchased have a bachelor's degree and are in a professional occupation.
 
   Dashboard Preview:
-
   ![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Dashboard.png)
 
+# Telecom Customer Churn(https://github.com/L-michelle/Projects/tree/main/Telecom%20Customer%20Churn)
+* Performed ad-hoc analysis of how many customers churned that streamed movies.
+* Created pivot tables and visualizations to answer questions.
+* Concluded that those who churned that streamed movies had a higher monthly charge and higher tenure.
+* When looking at contract term per gender, males and females were split pretty evenly amongst all the three offered plans.
+* Also found that those who pay with a mailed check paid significantly less than those who used other means of payment methods available. 
+* Made recommendations to stakeholders to offer same introductory offers to tenured members to prevent churn.
   
 # [Trending YouTube Video Dashboard](https://github.com/L-michelle/Projects-/tree/main/Trending%20YouTube%20Videos%20Dashboard)
 * Produced a dashboard using Tableau to visualize the trending videos by date, region, and category.
