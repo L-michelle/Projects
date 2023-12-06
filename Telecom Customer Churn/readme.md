@@ -8,6 +8,7 @@
 
 
 Preview of Dashboard:
+
 ![Pivot Table](https://github.com/L-michelle/Projects/blob/main/Telecom%20Customer%20Churn/images/Pivot%20Table.png)
 
 ![Avg Tenure and Charges](https://github.com/L-michelle/Projects/blob/main/Telecom%20Customer%20Churn/images/Avg%20Tenure%20and%20Charges.png)
