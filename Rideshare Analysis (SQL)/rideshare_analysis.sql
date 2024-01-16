@@ -28,8 +28,9 @@ weather_records
 
 
 
--- using SQLite Studio
-/*Print the company_name field. Find the number of taxi rides for each taxi company for November 15-16, 2017, 
+
+/*-- using SQLite Studio
+Print the company_name field. Find the number of taxi rides for each taxi company for November 15-16, 2017, 
 name the resulting field trips_amount, and print it, too. Sort the results by the trips_amount field in descending order.*/
 select 
     cabs.company_name as company_name,
