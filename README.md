@@ -75,9 +75,10 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Concluded that highest number of customers who purchased have a bachelor's degree and are in a professional occupation.
 
   Dashboard Preview:
+  
   ![Dashboard](https://github.com/L-michelle/Projects/blob/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets)/Dashboard.png)
 
-# [Telecom Customer Churn](https://github.com/L-michelle/Projects/tree/main/Telecom%20Customer%20Churn)
+# [Telecom Customer Churn (Excel)](https://github.com/L-michelle/Projects/tree/main/Telecom%20Customer%20Churn)
 * Performed ad-hoc analysis of how many customers churned that streamed movies.
 * Created pivot tables and visualizations to answer questions.
 * Concluded that those who churned that streamed movies had a higher monthly charge and higher tenure.
