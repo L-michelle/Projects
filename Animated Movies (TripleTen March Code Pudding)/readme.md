@@ -16,6 +16,8 @@ Original Language had a positive correlation with film runtime.
 * Sleeping Beauty had highest verage vote scores.
 * Elemental had highest Popularity scores
 
+[Link to Tableau Workbook](https://public.tableau.com/app/profile/michelle.le3091/viz/AnimatedMovies_17114849216200/AnimatedMoviesBringingtheWorldTogether?publish=yes)
+
 YouTube LIVE recording of entire competition with host Q&A can be found [here](https://www.youtube.com/live/rWTYgq_3ER4?si=fNs4AeeffGvZo9k8).
 
 Team recorded presentation can be found [here](https://drive.google.com/file/d/1hCgHvyS8QK4xuK0Vba_DeCW6dX-BBXlA/view?usp=drive_lin).
