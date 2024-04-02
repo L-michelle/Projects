@@ -21,3 +21,6 @@ Original Language had a positive correlation with film runtime.
 YouTube LIVE recording of entire competition with host Q&A can be found [here](https://www.youtube.com/live/rWTYgq_3ER4?si=fNs4AeeffGvZo9k8).
 
 Team recorded presentation can be found [here](https://drive.google.com/file/d/1hCgHvyS8QK4xuK0Vba_DeCW6dX-BBXlA/view?usp=drive_lin).
+
+## Workbook Preview:
+![Workbook Preview](https://github.com/L-michelle/Projects/blob/main/Animated%20Movies%20(TripleTen%20March%20Code%20Pudding)/animated_movies_preview.png)
