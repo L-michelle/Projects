@@ -87,5 +87,9 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Made recommendations to stakeholders to offer same introductory offers to tenured members to prevent churn.
   
 # [Trending YouTube Video Dashboard](https://github.com/L-michelle/Projects-/tree/main/Trending%20YouTube%20Videos%20Dashboard)
-* Produced a dashboard using Tableau to visualize the trending videos by date, region, and category.
+* Project Goal: Automate analysis of trending YouTube videos to inform video ad placement strategies.
+* Created dashboard to relieve manual analysis of trending videos by category, region, and date, leading to repetitive questions from new employees.
+* Target Users: Video Ads Planning Managers
+* Dashboard Refresh Rate: Daily at midnight UTC
+* Defined technical requirements through collaboration with team members and data engineers.
 * Produced and presented findings in Powerpoint presentation.
