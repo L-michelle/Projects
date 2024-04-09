@@ -18,7 +18,7 @@ Welcome to my portfolio! This repository contains some projects that I have exec
     1. The average revenue from users of the Ultimate and Surf plan differs.
     2. The average revenue from users in the NY-NJ area is different from users in the other regions.
 
-# [Food Product Analysis (A/A/B Testing and Funnel Analysis](https://github.com/L-michelle/Projects/tree/main/Food%20Product%20Analysis)
+# [Food Product Analysis (A/A/B Testing and Funnel Analysis)](https://github.com/L-michelle/Projects/tree/main/Food%20Product%20Analysis)
 * Studied food products app 
 * prepared the data for EDA (removed duplicates and changed data types)
 * Studied sales funnel
@@ -59,7 +59,7 @@ Welcome to my portfolio! This repository contains some projects that I have exec
     2. On Monday mornings, Springfield and Shelbyville residents listen to different genres. This is also true for Friday evenings.
     3. Springfield and Shelbyville listeners have different preferences. In Springfield, they prefer pop, while Shelbyville has more rap fans.
 
-# [Student Bootcamp Analysis (Dashboard)](https://github.com/L-michelle/Projects/tree/main/Student%20Bootcamp%20Analysis)
+# [Student Bootcamp Analysis](https://github.com/L-michelle/Projects/tree/main/Student%20Bootcamp%20Analysis)
 * Analyzed Student 32 during time at bootcamp. 
 * Looked at overall activity and session throughout the cohort. 
 * Made visualizations depicting activity.  
