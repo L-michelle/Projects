@@ -10,3 +10,8 @@ Findings:
 * No single factor solely responsible for heart attacks.
 
 Conclusion/ Recommendations: While various factors contribute to heart attacks/heart disease, no single activity is solely responsible. Additionally, the data is limited to certain countries, and a larger sample size would be beneficial for more conclusive results. Incorporating gene-specific conditions alongside overall family history could further refine risk assessment.
+
+[Link to Tableau Dashboard](https://public.tableau.com/app/profile/michelle.le3091/viz/HeartAttackRiskbySexandCountry/Dashboard1)
+
+## Dashboard Preview:
+![Dashboard Preview](https://github.com/L-michelle/Projects/blob/main/Heart%20Attack%20Risk%20(Dashboard)/heart%20attack%20risk%20preview.png)
