@@ -2,6 +2,11 @@
 # Michelle Le Data Analytics Portfolio
 Welcome to my portfolio! This repository contains some projects that I have executed. Please feel free to look around let me know if you have any questions!
 
+# [Heart Attack Risk (Dashboard)](https://github.com/L-michelle/Projects/tree/main/Heart%20Attack%20Risk%20(Dashboard))
+* Data Visualization Winner for TripleTen Dec. 2023
+* Cleaned data in Jupyter Notebook environment using Python and created visualization in Tableau.
+* Project Goal: Identify factors contributing to heart attack risk across various countries.
+
 # [Rideshare Analysis (SQL)](https://github.com/L-michelle/Projects/tree/main/Rideshare%20Analysis%20(SQL))
 * Parsed data from website to obtain Chicago weather in November of 2017
 * Analyzed data using SQL and python to find patterns 
