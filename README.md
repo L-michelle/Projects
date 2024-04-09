@@ -78,6 +78,11 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Defined technical requirements through collaboration with team members and data engineers.
 * Produced and presented findings in Powerpoint presentation.
 
+# [Animated Movies (TripleTen March Code Pudding)](https://github.com/L-michelle/Projects/tree/main/Animated%20Movies%20(TripleTen%20March%20Code%20Pudding))
+* Contributed to a collaborative team project to showcase data visualization and communication skills. 
+* Utilized Python within a Jupyter Notebook environment for data cleaning and initial exploratory analysis, extracting key insights. 
+* Leveraged insights to construct data visualizations in Tableau and effectively communicated findings to audience in live presentation. 
+
 # [Bike Purchase Dashboard (Google Sheets)](https://github.com/L-michelle/Projects/tree/main/Bike%20Purchase%20Dashboard%20(Google%20Sheets))
 * Performed data cleaning and removed duplicates. 
 * Performed quick analysis and stats of data.
