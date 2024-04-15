@@ -6,14 +6,14 @@ Key findings:
 * The United States produced the most animated movies.
 * The most produced genre was Comedy until the 1970's when Family films took over. Except for a brief period at the begining of the pandemic when Documentaries were Top.
 * English is the primary language of animated movies.
-Original Language had a positive correlation with film runtime.
+* Original Language had a positive correlation with film runtime.
 * Animated movies have been steadily getting longer over time until the 2008 recession, have had steadily declined since.
 * Pixar, when in conjunction with Disney had the highest revenue at 7.9 Billion.
 * Frozen 2 made the highest revenue at 1.45 Billion.
-* There is a direct corellation between budget size and revenue.
+* There is a direct correllation between budget size and revenue.
 * Sequals bring more money in than their original titles.
 * ONF | NFB has the most produced films yet does not reach near the top in revenue.
-* Sleeping Beauty had highest verage vote scores.
+* Sleeping Beauty had highest average vote scores.
 * Elemental had highest Popularity scores
 
 [Link to Tableau Workbook](https://public.tableau.com/app/profile/michelle.le3091/viz/AnimatedMovies_17114849216200/AnimatedMoviesBringingtheWorldTogether?publish=yes)
