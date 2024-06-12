@@ -8,7 +8,7 @@ We will:
 - Draw basic conclusions and develop recommendations on how to improve customer service:
   1. Identify target groups
   2. Suggest measures to cut churn
-  3. Describe any other patterns you see with respect to interaction with customers
+  3. Describe any other patterns with respect to interaction with customers
 
 Preview:<br>
 ![distribution](https://github.com/L-michelle/Projects/blob/main/Gym%20Churn%20Prediction/images/distribution.png)
