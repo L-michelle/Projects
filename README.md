@@ -13,6 +13,12 @@ Welcome to my portfolio! This repository contains some projects that I have exec
 * Used EDA to understand passenger preferences and the impact of external factors on rides such as weather
 * Tested hypothesis weather the average duration of rides from the Loop to O'Hare International Airport differs on rainy Saturdays
 
+# [Business Analytics (Optimizing Marketing Expenses)](https://github.com/L-michelle/Projects/tree/main/Business%20Analytics)
+* Performed data cleaning prior to EDA of datasets.
+* Analyzed KPIs using pivot tables and merging of tables. 
+* Identified user engagement (DAU, WAU, MAU), revenue from products, revenue per user, and return on investment (ROI) in advertising costs. 
+* performed cohort analysis for revenue, user retention rate, revenue cohorts, and customer acquisition cost (CAC) cohort.
+
 # [Phone Plan Revenue Analysis](https://github.com/L-michelle/Projects-/tree/main/Phone%20Analysis)
 * Determined which phone plan produced more revenue to adjust the advertising budget.
 * Analyzed client behavior.
