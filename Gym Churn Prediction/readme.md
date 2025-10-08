@@ -1,4 +1,4 @@
-# Gym Churn Prediction Using Machine Learning
+# Predictive Modeling for Gym Member Retention
 
 The gym chain Model Fitness is developing a customer interaction strategy based on analytical data. Model Fitness has digitized a number of its customer profiles. In this project, we will analyze them and come up with a customer retention strategy.
 We will:
