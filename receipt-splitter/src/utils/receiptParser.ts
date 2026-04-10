@@ -1,10 +1,11 @@
 import { ReceiptItem } from '../types';
 import { TAX_FEE_KEYWORDS } from '../constants/taxKeywords';
 
-// Matches any $price or price pattern (requires digit before decimal)
+// Matches a $price anywhere in a line (requires $ sign and digit before decimal)
 const PRICE_PATTERN = /\$(\d+\.\d{2})/g;
-// A line that is ONLY a price
-const PRICE_ONLY_REGEX = /^\$?(\d+\.\d{2})$/;
+
+// Matches a line that STARTS with a price (allows trailing characters like "T", "N", tax codes)
+const LINE_STARTS_WITH_PRICE = /^\$?(\d+\.\d{2})/;
 
 function isTaxOrFeeKeyword(name: string): boolean {
   const lower = name.toLowerCase();
@@ -24,16 +25,15 @@ function cleanName(raw: string): string {
   // Remove trailing single-letter tax indicators like " T" or " N"
   name = name.replace(/\s+[A-Z]$/, '').trim();
 
-  // Remove leading quantity patterns: "22 - ", "22- ", "22 x ", "2x "
+  // Remove leading quantity+dash: "22 - ", "35- ", "2x "
   name = name.replace(/^\d+\s*[-–x]\s*/i, '').trim();
-  // Remove bare leading number with space: "22 PET" → "PET"
+  // Remove bare leading number: "22 PET" → "PET"
   name = name.replace(/^\d+\s+/, '').trim();
 
-  // Remove standalone barcode/SKU numbers (5+ digits with no decimal)
-  name = name.replace(/\s+\d{5,}\s*/g, ' ').trim();
-  name = name.replace(/\s+\d{5,}$/, '').trim();
+  // Remove standalone barcode/SKU numbers (5+ digits, no decimal)
+  name = name.replace(/\s+\d{5,}/g, '').trim();
 
-  // Remove embedded price patterns like "$.10" or "$0.10" left in the name
+  // Remove embedded price fragments like "$.10" left in name
   name = name.replace(/\$\.?\d*\.\d{2}/g, '').trim();
 
   // Collapse multiple spaces
@@ -53,7 +53,7 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
-    // Find ALL $price matches in this line, take the LAST one as the item price
+    // --- Strategy 1: find a $price anywhere on this line ---
     let lastMatch: RegExpExecArray | null = null;
     let m: RegExpExecArray | null;
     PRICE_PATTERN.lastIndex = 0;
@@ -66,11 +66,10 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
 
     if (lastMatch) {
       price = parseFloat(lastMatch[1]);
-      // Everything before the last price is the raw name
       rawName = line.slice(0, lastMatch.index).trim();
 
       if (rawName.length < 1) {
-        // Price is at the very start — take everything after as the name
+        // Price at start of line — take everything after as name
         const afterPrice = line.slice(lastMatch.index + lastMatch[0].length).trim();
         if (afterPrice.length >= 2) {
           rawName = afterPrice;
@@ -79,16 +78,22 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
         }
       }
     } else {
-      // No $price on this line — check if the NEXT line is price-only
-      const nextLine = lines[i + 1]?.trim() ?? '';
-      const nextPriceMatch = nextLine.match(PRICE_ONLY_REGEX);
-      if (nextPriceMatch) {
-        price = parseFloat(nextPriceMatch[1]);
-        rawName = line.trim();
-        i++;
-      } else {
-        continue;
+      // --- Strategy 2: no $price on this line ---
+      // Look ahead up to 2 lines for a line that STARTS with a price
+      // (handles format where price is on its own line, possibly with trailing tax code)
+      let found = false;
+      for (let j = i + 1; j <= Math.min(i + 2, lines.length - 1); j++) {
+        const nextLine = lines[j].trim();
+        const nextPriceMatch = nextLine.match(LINE_STARTS_WITH_PRICE);
+        if (nextPriceMatch) {
+          price = parseFloat(nextPriceMatch[1]);
+          rawName = line.trim();
+          i = j; // consume up to the price line
+          found = true;
+          break;
+        }
       }
+      if (!found) continue;
     }
 
     if (!price || price <= 0) continue;
