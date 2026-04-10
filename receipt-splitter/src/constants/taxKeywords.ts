@@ -1,0 +1,16 @@
+export const TAX_FEE_KEYWORDS = [
+  'tax',
+  'hst',
+  'gst',
+  'pst',
+  'vat',
+  'surcharge',
+  'fee',
+  'service charge',
+  'subtotal',
+  'sub-total',
+  'total',
+  'delivery',
+  'convenience fee',
+  'processing fee',
+];
