@@ -6,7 +6,7 @@ export default {
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
-    newArchEnabled: true,
+    newArchEnabled: false,
     splash: {
       image: './assets/splash-icon.png',
       resizeMode: 'contain',
@@ -17,7 +17,7 @@ export default {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#ffffff',
       },
-      edgeToEdgeEnabled: true,
+      edgeToEdgeEnabled: false,
       predictiveBackGestureEnabled: false,
       permissions: ['CAMERA', 'READ_MEDIA_IMAGES', 'READ_EXTERNAL_STORAGE'],
     },
