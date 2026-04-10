@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, Switch, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { ReceiptItem } from '../types';
 
@@ -9,6 +9,14 @@ type Props = {
 };
 
 export default function ReceiptItemRow({ item, onChange, onDelete }: Props) {
+  // Keep price as a string while editing so decimals like "14." don't get swallowed
+  const [priceText, setPriceText] = useState(item.price > 0 ? item.price.toFixed(2) : '');
+
+  function commitPrice(text: string) {
+    const parsed = parseFloat(text);
+    onChange({ ...item, price: isNaN(parsed) ? 0 : parsed });
+  }
+
   return (
     <View style={styles.row}>
       <TextInput
@@ -20,17 +28,16 @@ export default function ReceiptItemRow({ item, onChange, onDelete }: Props) {
       />
       <TextInput
         style={styles.priceInput}
-        value={item.price === 0 ? '' : item.price.toString()}
-        onChangeText={(text) => {
-          const parsed = parseFloat(text);
-          onChange({ ...item, price: isNaN(parsed) ? 0 : parsed });
-        }}
+        value={priceText}
+        onChangeText={setPriceText}
+        onBlur={() => commitPrice(priceText)}
+        onEndEditing={() => commitPrice(priceText)}
         placeholder="0.00"
         placeholderTextColor="#aaa"
         keyboardType="decimal-pad"
       />
       <View style={styles.taxToggle}>
-        <Text style={styles.taxLabel}>Tax</Text>
+        <Text style={styles.taxLabel}>Tax/Fee</Text>
         <Switch
           value={item.isTaxOrFee}
           onValueChange={(val) =>

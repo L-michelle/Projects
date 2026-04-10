@@ -41,61 +41,62 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
     ]);
   }
 
-  function onContinue() {
-    navigation.navigate('AssignItems', { imageUri, items, people });
-  }
-
   const menuItems = items.filter((i) => !i.isTaxOrFee && !i.isGrandTotal);
   const taxItems = items.filter((i) => i.isTaxOrFee && !i.isGrandTotal);
+  const grandTotalItems = items.filter((i) => i.isGrandTotal);
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
         <Image source={{ uri: imageUri }} style={styles.thumb} resizeMode="cover" />
-        <Text style={styles.hint}>
-          Review the items below. Toggle "Tax" for taxes or fees — they'll be split evenly. Delete any lines that aren't real items.
-        </Text>
 
-        {menuItems.length > 0 && (
+        <View style={styles.tipBox}>
+          <Text style={styles.tipTitle}>What is the Tax/Fee toggle?</Text>
+          <Text style={styles.tipText}>
+            Turn it ON for taxes, fees, or surcharges. Those lines will be{' '}
+            <Text style={styles.tipBold}>split evenly</Text> among everyone and won't appear
+            in the item assignment step. Leave it OFF for regular food and drink items.
+          </Text>
+        </View>
+
+        <Text style={styles.sectionLabel}>Menu Items</Text>
+        {menuItems.length === 0 && (
+          <Text style={styles.emptyNote}>No menu items detected. Add them manually below.</Text>
+        )}
+        {menuItems.map((item) => (
+          <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
+        ))}
+
+        {taxItems.length > 0 && (
           <>
-            <Text style={styles.sectionLabel}>Menu Items</Text>
-            {menuItems.map((item) => (
-              <ReceiptItemRow
-                key={item.id}
-                item={item}
-                onChange={updateItem}
-                onDelete={deleteItem}
-              />
+            <Text style={styles.sectionLabel}>Taxes &amp; Fees — split evenly</Text>
+            {taxItems.map((item) => (
+              <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
             ))}
           </>
         )}
 
-        {taxItems.length > 0 && (
+        {grandTotalItems.length > 0 && (
           <>
-            <Text style={styles.sectionLabel}>Taxes &amp; Fees (split evenly)</Text>
-            {taxItems.map((item) => (
-              <ReceiptItemRow
-                key={item.id}
-                item={item}
-                onChange={updateItem}
-                onDelete={deleteItem}
-              />
+            <Text style={styles.sectionLabel}>Detected Totals — delete these</Text>
+            {grandTotalItems.map((item) => (
+              <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
             ))}
           </>
         )}
 
         <TouchableOpacity style={styles.addBtn} onPress={addItem}>
-          <Text style={styles.addBtnText}>+ Add Item</Text>
+          <Text style={styles.addBtnText}>+ Add Missing Item</Text>
         </TouchableOpacity>
       </ScrollView>
 
       <View style={styles.footer}>
         <TouchableOpacity
           style={[styles.continueBtn, items.length === 0 && styles.continueBtnDisabled]}
-          onPress={onContinue}
+          onPress={() => navigation.navigate('AssignItems', { imageUri, items, people })}
           disabled={items.length === 0}
         >
-          <Text style={styles.continueBtnText}>Continue →</Text>
+          <Text style={styles.continueBtnText}>Assign Items →</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -105,11 +106,30 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F5F5F5' },
   content: { padding: 16, paddingBottom: 20 },
-  thumb: { width: '100%', height: 160, borderRadius: 10, marginBottom: 12 },
-  hint: { fontSize: 13, color: '#666', marginBottom: 16, lineHeight: 18 },
-  sectionLabel: { fontSize: 13, fontWeight: '700', color: '#009688', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 },
+  thumb: { width: '100%', height: 140, borderRadius: 10, marginBottom: 12 },
+  tipBox: {
+    backgroundColor: '#E0F2F1',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 16,
+    borderLeftWidth: 3,
+    borderLeftColor: '#009688',
+  },
+  tipTitle: { fontSize: 13, fontWeight: '700', color: '#00695C', marginBottom: 4 },
+  tipText: { fontSize: 12, color: '#004D40', lineHeight: 18 },
+  tipBold: { fontWeight: '700' },
+  sectionLabel: {
+    fontSize: 12,
+    fontWeight: '700',
+    color: '#009688',
+    marginBottom: 6,
+    marginTop: 4,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  emptyNote: { fontSize: 13, color: '#aaa', marginBottom: 10 },
   addBtn: {
-    marginTop: 8,
+    marginTop: 10,
     borderRadius: 8,
     borderWidth: 1.5,
     borderColor: '#009688',
