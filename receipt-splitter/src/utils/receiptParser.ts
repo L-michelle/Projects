@@ -1,24 +1,45 @@
 import { ReceiptItem } from '../types';
 import { TAX_FEE_KEYWORDS } from '../constants/taxKeywords';
 
-// Matches any price-like pattern (e.g. 12.00 or $12.00) anywhere in a line
-const PRICE_PATTERN = /\$?(\d+\.\d{2})/g;
-// Matches a line that contains ONLY a price
+// Matches any $price or price pattern (requires digit before decimal)
+const PRICE_PATTERN = /\$(\d+\.\d{2})/g;
+// A line that is ONLY a price
 const PRICE_ONLY_REGEX = /^\$?(\d+\.\d{2})$/;
-// Leading quantity prefix like "2x " or "2 "
-const QUANTITY_PREFIX_REGEX = /^\d+\s?[xX]?\s+/;
 
 function isTaxOrFeeKeyword(name: string): boolean {
   const lower = name.toLowerCase();
   return TAX_FEE_KEYWORDS.some((kw) => {
-    // Use word boundaries so "coffee" doesn't match "fee", etc.
     const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+');
     return new RegExp(`(^|\\s|\\b)${escaped}(\\s|$|\\b)`, 'i').test(lower);
   });
 }
 
 function isGrandTotalLine(name: string): boolean {
-  return /^(sub\s?)?total/i.test(name.trim());
+  return /^(sub\s*)?total/i.test(name.trim());
+}
+
+function cleanName(raw: string): string {
+  let name = raw;
+
+  // Remove trailing single-letter tax indicators like " T" or " N"
+  name = name.replace(/\s+[A-Z]$/, '').trim();
+
+  // Remove leading quantity patterns: "22 - ", "22- ", "22 x ", "2x "
+  name = name.replace(/^\d+\s*[-–x]\s*/i, '').trim();
+  // Remove bare leading number with space: "22 PET" → "PET"
+  name = name.replace(/^\d+\s+/, '').trim();
+
+  // Remove standalone barcode/SKU numbers (5+ digits with no decimal)
+  name = name.replace(/\s+\d{5,}\s*/g, ' ').trim();
+  name = name.replace(/\s+\d{5,}$/, '').trim();
+
+  // Remove embedded price patterns like "$.10" or "$0.10" left in the name
+  name = name.replace(/\$\.?\d*\.\d{2}/g, '').trim();
+
+  // Collapse multiple spaces
+  name = name.replace(/\s{2,}/g, ' ').trim();
+
+  return name;
 }
 
 export function parseReceiptText(rawText: string): ReceiptItem[] {
@@ -31,10 +52,8 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    let price: number | null = null;
-    let name = '';
 
-    // Find ALL price matches in this line, take the last (rightmost) one
+    // Find ALL $price matches in this line, take the LAST one as the item price
     let lastMatch: RegExpExecArray | null = null;
     let m: RegExpExecArray | null;
     PRICE_PATTERN.lastIndex = 0;
@@ -42,37 +61,39 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
       lastMatch = m;
     }
 
+    let price: number | null = null;
+    let rawName = '';
+
     if (lastMatch) {
       price = parseFloat(lastMatch[1]);
-      // Everything before the last price = the item name
-      name = line.slice(0, lastMatch.index).trim();
+      // Everything before the last price is the raw name
+      rawName = line.slice(0, lastMatch.index).trim();
 
-      if (name.length < 2) {
-        // Price is at the start of the line — take everything after as the name
+      if (rawName.length < 1) {
+        // Price is at the very start — take everything after as the name
         const afterPrice = line.slice(lastMatch.index + lastMatch[0].length).trim();
         if (afterPrice.length >= 2) {
-          name = afterPrice;
+          rawName = afterPrice;
         } else {
           continue;
         }
       }
     } else {
-      // No price on this line — check if the NEXT line is a price-only line
+      // No $price on this line — check if the NEXT line is price-only
       const nextLine = lines[i + 1]?.trim() ?? '';
       const nextPriceMatch = nextLine.match(PRICE_ONLY_REGEX);
       if (nextPriceMatch) {
         price = parseFloat(nextPriceMatch[1]);
-        name = line.trim();
-        i++; // consume the next line
+        rawName = line.trim();
+        i++;
       } else {
-        continue; // No price found at all — skip
+        continue;
       }
     }
 
     if (!price || price <= 0) continue;
 
-    // Strip leading quantities like "2x " or "2 "
-    name = name.replace(QUANTITY_PREFIX_REGEX, '').trim();
+    const name = cleanName(rawName);
     if (name.length < 2) continue;
 
     const taxOrFee = isTaxOrFeeKeyword(name);
