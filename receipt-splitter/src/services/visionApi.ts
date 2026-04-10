@@ -16,14 +16,27 @@ export async function analyzeReceipt(imageUri: string): Promise<string> {
     encoding: 'base64',
   });
 
-  const response = await axios.post(VISION_URL, {
-    requests: [
-      {
-        image: { content: base64 },
-        features: [{ type: 'DOCUMENT_TEXT_DETECTION' }],
-      },
-    ],
-  });
+  let response;
+  try {
+    response = await axios.post(VISION_URL, {
+      requests: [
+        {
+          image: { content: base64 },
+          features: [{ type: 'DOCUMENT_TEXT_DETECTION' }],
+        },
+      ],
+    });
+  } catch (err: any) {
+    const status = err?.response?.status;
+    const message = err?.response?.data?.error?.message ?? err?.message;
+    if (status === 400) {
+      throw new Error(`API error 400: ${message}\n\nCheck that your API key is correct and the Cloud Vision API is enabled in Google Cloud Console.`);
+    } else if (status === 403) {
+      throw new Error(`API error 403: ${message}\n\nYour API key may be restricted or billing may not be set up in Google Cloud Console.`);
+    } else {
+      throw new Error(`API error ${status ?? 'unknown'}: ${message}`);
+    }
+  }
 
   const fullText: string | undefined =
     response.data?.responses?.[0]?.fullTextAnnotation?.text;
