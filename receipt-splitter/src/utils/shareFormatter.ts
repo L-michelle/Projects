@@ -11,9 +11,8 @@ export function formatSplit(splits: BillSplit[], summary: ReceiptSummary): strin
     lines.push(`${split.person.name}: ${fmt(split.total)}`);
 
     for (const { item, costForPerson } of split.assignedItems) {
-      const assignedCount = summary.assignments.find(
-        (a) => a.itemId === item.id
-      )?.personIds.length ?? 1;
+      const assignedCount =
+        summary.assignments.find((a) => a.itemId === item.id)?.personIds.length ?? 1;
       const label =
         assignedCount > 1 ? `${item.name} (split ${assignedCount})` : item.name;
       lines.push(`  ${label}: ${fmt(costForPerson)}`);
@@ -21,6 +20,10 @@ export function formatSplit(splits: BillSplit[], summary: ReceiptSummary): strin
 
     if (split.taxShare > 0) {
       lines.push(`  Tax & Fees: ${fmt(split.taxShare)}`);
+    }
+
+    if (split.tipAmount > 0) {
+      lines.push(`  Tip: ${fmt(split.tipAmount)}`);
     }
 
     lines.push('');

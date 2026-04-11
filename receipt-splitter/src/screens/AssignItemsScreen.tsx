@@ -256,7 +256,7 @@ export default function AssignItemsScreen({ navigation, route }: Props) {
         <TouchableOpacity
           style={styles.continueBtn}
           onPress={() =>
-            navigation.navigate('BillSummary', {
+            navigation.navigate('Tip', {
               summary: { imageUri, items, people, assignments },
             })
           }

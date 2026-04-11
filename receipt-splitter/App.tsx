@@ -11,6 +11,7 @@ import ProcessingScreen from './src/screens/ProcessingScreen';
 import ReviewItemsScreen from './src/screens/ReviewItemsScreen';
 import AssignItemsScreen from './src/screens/AssignItemsScreen';
 import BillSummaryScreen from './src/screens/BillSummaryScreen';
+import TipScreen from './src/screens/TipScreen';
 import ShareScreen from './src/screens/ShareScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -49,6 +50,11 @@ export default function App() {
               name="AssignItems"
               component={AssignItemsScreen}
               options={{ title: 'Assign Items' }}
+            />
+            <Stack.Screen
+              name="Tip"
+              component={TipScreen}
+              options={{ title: 'Add a Tip' }}
             />
             <Stack.Screen
               name="BillSummary"

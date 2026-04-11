@@ -11,8 +11,8 @@ function fmt(n: number): string {
 }
 
 export default function BillSummaryScreen({ navigation, route }: Props) {
-  const { summary } = route.params;
-  const splits = useMemo(() => calculateSplits(summary), [summary]);
+  const { summary, tips } = route.params;
+  const splits = useMemo(() => calculateSplits(summary, tips), [summary, tips]);
   const grandTotal = splits.reduce((s, sp) => s + sp.total, 0);
 
   return (
@@ -25,7 +25,8 @@ export default function BillSummaryScreen({ navigation, route }: Props) {
             {split.assignedItems.map(({ item, costForPerson }) => {
               const shareCount =
                 summary.assignments.find((a) => a.itemId === item.id)?.personIds.length ?? 1;
-              const label = shareCount > 1 ? `${item.name} (split ${shareCount})` : item.name;
+              const label =
+                shareCount > 1 ? `${item.name} (split ${shareCount})` : item.name;
               return (
                 <View key={item.id} style={styles.itemRow}>
                   <Text style={styles.itemName} numberOfLines={2}>{label}</Text>
@@ -52,6 +53,15 @@ export default function BillSummaryScreen({ navigation, route }: Props) {
               </View>
             )}
 
+            {split.tipAmount > 0 && (
+              <View style={styles.itemRow}>
+                <Text style={styles.tipLabel}>
+                  Tip ({tips.find((t) => t.personId === split.person.id)?.tipPercent ?? 0}%)
+                </Text>
+                <Text style={styles.tipValue}>{fmt(split.tipAmount)}</Text>
+              </View>
+            )}
+
             <View style={styles.totalRow}>
               <Text style={styles.totalLabel}>TOTAL</Text>
               <Text style={styles.totalValue}>{fmt(split.total)}</Text>
@@ -60,7 +70,7 @@ export default function BillSummaryScreen({ navigation, route }: Props) {
         ))}
 
         <View style={styles.grandTotalCard}>
-          <Text style={styles.grandLabel}>Receipt Total</Text>
+          <Text style={styles.grandLabel}>Combined Total</Text>
           <Text style={styles.grandValue}>{fmt(grandTotal)}</Text>
         </View>
       </ScrollView>
@@ -99,6 +109,8 @@ const styles = StyleSheet.create({
   divider: { height: 1, backgroundColor: '#eee', marginVertical: 8 },
   subLabel: { fontSize: 13, color: '#888' },
   subValue: { fontSize: 13, color: '#888' },
+  tipLabel: { fontSize: 13, color: '#F57C00' },
+  tipValue: { fontSize: 13, color: '#F57C00', fontWeight: '600' },
   totalRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',

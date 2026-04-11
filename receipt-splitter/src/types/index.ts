@@ -7,13 +7,19 @@ export type ReceiptItem = {
   id: string;
   name: string;
   price: number;
-  isTaxOrFee: boolean;   // auto-detected or user-toggled; splits evenly, skips assignment
-  isGrandTotal: boolean; // lines like "TOTAL" — excluded from all calculations
+  isTaxOrFee: boolean;
+  isGrandTotal: boolean;
 };
 
 export type Assignment = {
   itemId: string;
-  personIds: string[]; // empty = unassigned
+  personIds: string[];
+};
+
+export type PersonTip = {
+  personId: string;
+  tipPercent: number;  // e.g. 20 means 20%
+  tipAmount: number;   // tipPercent / 100 * receiptTotal
 };
 
 export type BillSplit = {
@@ -21,6 +27,7 @@ export type BillSplit = {
   assignedItems: { item: ReceiptItem; costForPerson: number }[];
   subtotal: number;
   taxShare: number;
+  tipAmount: number;
   total: number;
 };
 
@@ -36,6 +43,7 @@ export type RootStackParamList = {
   Processing: { imageUri: string; people: Person[] };
   ReviewItems: { imageUri: string; items: ReceiptItem[]; people: Person[] };
   AssignItems: { imageUri: string; items: ReceiptItem[]; people: Person[] };
-  BillSummary: { summary: ReceiptSummary };
+  Tip: { summary: ReceiptSummary };
+  BillSummary: { summary: ReceiptSummary; tips: PersonTip[] };
   Share: { summary: ReceiptSummary; splits: BillSplit[] };
 };
