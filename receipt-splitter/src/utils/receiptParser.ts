@@ -104,6 +104,9 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
     const taxOrFee = isTaxOrFeeKeyword(name);
     const grandTotal = isGrandTotalLine(name);
 
+    // Skip grand total / subtotal lines entirely — they're not real items
+    if (grandTotal) continue;
+
     items.push({
       id: `item-${Date.now()}-${i}-${Math.random().toString(36).slice(2)}`,
       name,

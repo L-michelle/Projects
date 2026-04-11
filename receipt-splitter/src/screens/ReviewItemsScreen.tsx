@@ -41,9 +41,8 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
     ]);
   }
 
-  const menuItems = items.filter((i) => !i.isTaxOrFee && !i.isGrandTotal);
-  const taxItems = items.filter((i) => i.isTaxOrFee && !i.isGrandTotal);
-  const grandTotalItems = items.filter((i) => i.isGrandTotal);
+  const menuItems = items.filter((i) => !i.isTaxOrFee);
+  const taxItems = items.filter((i) => i.isTaxOrFee);
 
   return (
     <View style={styles.container}>
@@ -71,15 +70,6 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
           <>
             <Text style={styles.sectionLabel}>Taxes &amp; Fees — split evenly</Text>
             {taxItems.map((item) => (
-              <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
-            ))}
-          </>
-        )}
-
-        {grandTotalItems.length > 0 && (
-          <>
-            <Text style={styles.sectionLabel}>Detected Totals — delete these</Text>
-            {grandTotalItems.map((item) => (
               <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
             ))}
           </>
