@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types';
 import { calculateSplits } from '../utils/billCalculator';
@@ -11,6 +12,7 @@ function fmt(n: number): string {
 }
 
 export default function BillSummaryScreen({ navigation, route }: Props) {
+  const insets = useSafeAreaInsets();
   const { summary, tips } = route.params;
   const splits = useMemo(() => calculateSplits(summary, tips), [summary, tips]);
   const grandTotal = splits.reduce((s, sp) => s + sp.total, 0);
@@ -75,21 +77,19 @@ export default function BillSummaryScreen({ navigation, route }: Props) {
         </View>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.shareBtn}
-          onPress={() => navigation.navigate('Share', { summary, splits })}
-        >
-          <Text style={styles.shareBtnText}>Share Breakdown →</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={[styles.fab, { bottom: insets.bottom + 20 }]}
+        onPress={() => navigation.navigate('Share', { summary, splits })}
+      >
+        <Text style={styles.fabText}>Share Breakdown →</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F5F5F5' },
-  content: { padding: 14, paddingBottom: 20 },
+  content: { padding: 14, paddingBottom: 110 },
   card: {
     backgroundColor: '#fff',
     borderRadius: 12,
@@ -132,7 +132,18 @@ const styles = StyleSheet.create({
   },
   grandLabel: { fontSize: 16, fontWeight: '700', color: '#fff' },
   grandValue: { fontSize: 20, fontWeight: '800', color: '#fff' },
-  footer: { padding: 16, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#eee' },
-  shareBtn: { backgroundColor: '#009688', borderRadius: 10, paddingVertical: 16, alignItems: 'center' },
-  shareBtnText: { color: '#fff', fontWeight: '700', fontSize: 16 },
+  fab: {
+    position: 'absolute',
+    right: 20,
+    backgroundColor: '#009688',
+    borderRadius: 28,
+    paddingVertical: 14,
+    paddingHorizontal: 22,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+  },
+  fabText: { color: '#fff', fontWeight: '700', fontSize: 15 },
 });

@@ -9,6 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, PersonTip, Person } from '../types';
 
@@ -21,6 +22,7 @@ function round2(n: number) {
 }
 
 export default function TipScreen({ navigation, route }: Props) {
+  const insets = useSafeAreaInsets();
   const { summary } = route.params;
   const { people, items } = summary;
 
@@ -141,18 +143,19 @@ export default function TipScreen({ navigation, route }: Props) {
         })}
       </ScrollView>
 
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.continueBtn} onPress={onContinue}>
-          <Text style={styles.continueBtnText}>See Bill Summary →</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={[styles.fab, { bottom: insets.bottom + 20 }]}
+        onPress={onContinue}
+      >
+        <Text style={styles.fabText}>See Bill Summary →</Text>
+      </TouchableOpacity>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F5F5F5' },
-  content: { padding: 16, paddingBottom: 20 },
+  content: { padding: 16, paddingBottom: 110 },
   totalBanner: {
     backgroundColor: '#009688',
     borderRadius: 12,
@@ -209,7 +212,18 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   customPctLabel: { fontSize: 18, fontWeight: '700', color: '#009688' },
-  footer: { padding: 16, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#eee' },
-  continueBtn: { backgroundColor: '#009688', borderRadius: 10, paddingVertical: 16, alignItems: 'center' },
-  continueBtnText: { color: '#fff', fontWeight: '700', fontSize: 16 },
+  fab: {
+    position: 'absolute',
+    right: 20,
+    backgroundColor: '#009688',
+    borderRadius: 28,
+    paddingVertical: 14,
+    paddingHorizontal: 22,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+  },
+  fabText: { color: '#fff', fontWeight: '700', fontSize: 15 },
 });

@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, Assignment, ReceiptItem, Person } from '../types';
 
@@ -20,6 +21,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'AssignItems'>;
 type ActiveDrag = { item: ReceiptItem; fromPersonId: string | null } | null;
 
 export default function AssignItemsScreen({ navigation, route }: Props) {
+  const insets = useSafeAreaInsets();
   const { imageUri, items, people } = route.params;
   const menuItems = items.filter((i) => !i.isTaxOrFee && !i.isGrandTotal);
 
@@ -252,18 +254,16 @@ export default function AssignItemsScreen({ navigation, route }: Props) {
         </Animated.View>
       )}
 
-      <View style={styles.footer}>
-        <TouchableOpacity
-          style={styles.continueBtn}
-          onPress={() =>
-            navigation.navigate('Tip', {
-              summary: { imageUri, items, people, assignments },
-            })
-          }
-        >
-          <Text style={styles.continueBtnText}>See Bill Summary →</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={[styles.fab, { bottom: insets.bottom + 20 }]}
+        onPress={() =>
+          navigation.navigate('Tip', {
+            summary: { imageUri, items, people, assignments },
+          })
+        }
+      >
+        <Text style={styles.fabText}>See Bill Summary →</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,
-    paddingBottom: 8,
+    paddingBottom: 90,
   },
   poolChip: {
     backgroundColor: '#fff',
@@ -364,6 +364,23 @@ const styles = StyleSheet.create({
   poolChipPrice: { fontSize: 12, color: '#009688', fontWeight: '700' },
   allDoneText: { color: '#aaa', fontSize: 12, textAlign: 'center', width: '100%', marginTop: 8 },
 
+  // FAB
+  fab: {
+    position: 'absolute',
+    right: 20,
+    backgroundColor: '#009688',
+    borderRadius: 28,
+    paddingVertical: 14,
+    paddingHorizontal: 22,
+    elevation: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    zIndex: 100,
+  },
+  fabText: { color: '#fff', fontWeight: '700', fontSize: 15 },
+
   // Ghost
   ghost: {
     position: 'absolute',
@@ -383,8 +400,4 @@ const styles = StyleSheet.create({
   ghostName: { color: '#fff', fontSize: 13, fontWeight: '700' },
   ghostPrice: { color: 'rgba(255,255,255,0.9)', fontSize: 12 },
 
-  // Footer
-  footer: { padding: 14, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#eee' },
-  continueBtn: { backgroundColor: '#009688', borderRadius: 10, paddingVertical: 14, alignItems: 'center' },
-  continueBtnText: { color: '#fff', fontWeight: '700', fontSize: 16 },
 });

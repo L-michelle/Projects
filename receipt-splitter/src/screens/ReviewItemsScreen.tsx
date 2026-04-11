@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, ReceiptItem } from '../types';
 import ReceiptItemRow from '../components/ReceiptItemRow';
@@ -16,6 +17,7 @@ type Props = NativeStackScreenProps<RootStackParamList, 'ReviewItems'>;
 let newItemCounter = 0;
 
 export default function ReviewItemsScreen({ navigation, route }: Props) {
+  const insets = useSafeAreaInsets();
   const { imageUri, people } = route.params;
   const [items, setItems] = useState<ReceiptItem[]>(route.params.items);
 
@@ -80,22 +82,20 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
         </TouchableOpacity>
       </ScrollView>
 
-      <View style={styles.footer}>
-        <TouchableOpacity
-          style={[styles.continueBtn, items.length === 0 && styles.continueBtnDisabled]}
-          onPress={() => navigation.navigate('AssignItems', { imageUri, items, people })}
-          disabled={items.length === 0}
-        >
-          <Text style={styles.continueBtnText}>Assign Items →</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        style={[styles.fab, { bottom: insets.bottom + 20 }, items.length === 0 && styles.fabDisabled]}
+        onPress={() => navigation.navigate('AssignItems', { imageUri, items, people })}
+        disabled={items.length === 0}
+      >
+        <Text style={styles.fabText}>Assign Items →</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F5F5F5' },
-  content: { padding: 16, paddingBottom: 20 },
+  content: { padding: 16, paddingBottom: 110 },
   thumb: { width: '100%', height: 140, borderRadius: 10, marginBottom: 12 },
   tipBox: {
     backgroundColor: '#E0F2F1',
@@ -128,8 +128,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addBtnText: { color: '#009688', fontWeight: '600', fontSize: 15 },
-  footer: { padding: 16, backgroundColor: '#fff', borderTopWidth: 1, borderTopColor: '#eee' },
-  continueBtn: { backgroundColor: '#009688', borderRadius: 10, paddingVertical: 16, alignItems: 'center' },
-  continueBtnDisabled: { backgroundColor: '#b2dfdb' },
-  continueBtnText: { color: '#fff', fontWeight: '700', fontSize: 16 },
+  fab: {
+    position: 'absolute',
+    right: 20,
+    backgroundColor: '#009688',
+    borderRadius: 28,
+    paddingVertical: 14,
+    paddingHorizontal: 22,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+  },
+  fabDisabled: { backgroundColor: '#b2dfdb' },
+  fabText: { color: '#fff', fontWeight: '700', fontSize: 15 },
 });
