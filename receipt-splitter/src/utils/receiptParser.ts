@@ -42,13 +42,14 @@ function cleanName(raw: string): string {
   return name;
 }
 
-export function parseReceiptText(rawText: string): ReceiptItem[] {
+export function parseReceiptText(rawText: string): { items: ReceiptItem[]; grandTotal: number | null } {
   const lines = rawText
     .split('\n')
     .map((l) => l.trim())
     .filter(Boolean);
 
   const items: ReceiptItem[] = [];
+  let capturedGrandTotal: number | null = null;
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -104,8 +105,11 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
     const taxOrFee = isTaxOrFeeKeyword(name);
     const grandTotal = isGrandTotalLine(name);
 
-    // Skip grand total / subtotal lines entirely — they're not real items
-    if (grandTotal) continue;
+    // Capture grand total price but don't add it as an editable item
+    if (grandTotal) {
+      if (capturedGrandTotal === null) capturedGrandTotal = price;
+      continue;
+    }
 
     items.push({
       id: `item-${Date.now()}-${i}-${Math.random().toString(36).slice(2)}`,
@@ -116,5 +120,5 @@ export function parseReceiptText(rawText: string): ReceiptItem[] {
     });
   }
 
-  return items;
+  return { items, grandTotal: capturedGrandTotal };
 }

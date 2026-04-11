@@ -20,7 +20,7 @@ let newItemCounter = 0;
 
 export default function ReviewItemsScreen({ navigation, route }: Props) {
   const insets = useSafeAreaInsets();
-  const { imageUri, people } = route.params;
+  const { imageUri, people, grandTotal } = route.params;
   const [items, setItems] = useState<ReceiptItem[]>(route.params.items);
 
   const scrollRef = useRef<ScrollView>(null);
@@ -68,7 +68,16 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
         contentContainerStyle={styles.content}
         keyboardShouldPersistTaps="handled"
       >
-        <Image source={{ uri: imageUri }} style={styles.thumb} resizeMode="cover" />
+        <View style={styles.receiptImageContainer}>
+          <Image source={{ uri: imageUri }} style={styles.receiptImage} resizeMode="contain" />
+        </View>
+
+        {grandTotal != null && (
+          <View style={styles.totalDueBanner}>
+            <Text style={styles.totalDueLabel}>Total Due</Text>
+            <Text style={styles.totalDueAmount}>${grandTotal.toFixed(2)}</Text>
+          </View>
+        )}
 
         <View style={styles.tipBox}>
           <Text style={styles.tipTitle}>What is the Tax/Fee toggle?</Text>
@@ -135,7 +144,27 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F5F5F5' },
   content: { padding: 16, paddingBottom: 110 },
-  thumb: { width: '100%', height: 140, borderRadius: 10, marginBottom: 12 },
+  receiptImageContainer: {
+    width: '100%',
+    height: 380,
+    borderRadius: 10,
+    backgroundColor: '#1a1a1a',
+    marginBottom: 10,
+    overflow: 'hidden',
+  },
+  receiptImage: { width: '100%', height: '100%' },
+  totalDueBanner: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#004D40',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    marginBottom: 14,
+  },
+  totalDueLabel: { fontSize: 14, fontWeight: '700', color: 'rgba(255,255,255,0.85)', letterSpacing: 0.3 },
+  totalDueAmount: { fontSize: 18, fontWeight: '800', color: '#fff' },
   tipBox: {
     backgroundColor: '#E0F2F1',
     borderRadius: 8,

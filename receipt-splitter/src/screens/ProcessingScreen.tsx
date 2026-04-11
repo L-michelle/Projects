@@ -16,7 +16,7 @@ export default function ProcessingScreen({ navigation, route }: Props) {
     async function run() {
       try {
         const rawText = await analyzeReceipt(imageUri);
-        const items = parseReceiptText(rawText);
+        const { items, grandTotal } = parseReceiptText(rawText);
 
         if (cancelled) return;
 
@@ -29,7 +29,7 @@ export default function ProcessingScreen({ navigation, route }: Props) {
           return;
         }
 
-        navigation.replace('ReviewItems', { imageUri, items, people });
+        navigation.replace('ReviewItems', { imageUri, items, people, grandTotal });
       } catch (err: any) {
         if (cancelled) return;
         Alert.alert(

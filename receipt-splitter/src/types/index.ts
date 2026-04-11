@@ -41,7 +41,7 @@ export type ReceiptSummary = {
 export type RootStackParamList = {
   Home: undefined;
   Processing: { imageUri: string; people: Person[] };
-  ReviewItems: { imageUri: string; items: ReceiptItem[]; people: Person[] };
+  ReviewItems: { imageUri: string; items: ReceiptItem[]; people: Person[]; grandTotal: number | null };
   AssignItems: { imageUri: string; items: ReceiptItem[]; people: Person[] };
   Tip: { summary: ReceiptSummary };
   BillSummary: { summary: ReceiptSummary; tips: PersonTip[] };
