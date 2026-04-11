@@ -16,6 +16,16 @@ import { RootStackParamList, Assignment, ReceiptItem, Person } from '../types';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const COLUMN_HEIGHT = 200;
 
+const PERSON_COLORS: { base: string; dark: string }[] = [
+  { base: '#1976D2', dark: '#0D47A1' }, // blue
+  { base: '#E53935', dark: '#B71C1C' }, // red
+  { base: '#8E24AA', dark: '#6A1B9A' }, // purple
+  { base: '#2E7D32', dark: '#1B5E20' }, // green
+  { base: '#F57C00', dark: '#E65100' }, // orange
+  { base: '#00838F', dark: '#006064' }, // teal
+  { base: '#C2185B', dark: '#880E4F' }, // pink
+];
+
 type Props = NativeStackScreenProps<RootStackParamList, 'AssignItems'>;
 
 type ActiveDrag = { item: ReceiptItem; fromPersonId: string | null } | null;
@@ -160,16 +170,17 @@ export default function AssignItemsScreen({ navigation, route }: Props) {
     <View style={styles.container}>
       {/* Person columns */}
       <View style={styles.columnsWrapper}>
-        {people.map((person: Person) => {
+        {people.map((person: Person, personIndex: number) => {
           const personItems = getItemsForPerson(person.id);
           const isOver = overPersonId === person.id;
+          const color = PERSON_COLORS[personIndex % PERSON_COLORS.length];
           return (
             <View
               key={person.id}
               ref={(r) => { columnRefs.current[person.id] = r; }}
               style={[styles.column, { width: columnWidth }, isOver && styles.columnOver]}
             >
-              <View style={[styles.columnHeader, isOver && styles.columnHeaderOver]}>
+              <View style={[styles.columnHeader, { backgroundColor: isOver ? color.dark : color.base }]}>
                 <Text style={styles.columnName} numberOfLines={1}>{person.name}</Text>
                 <Text style={styles.columnCount}>{personItems.length} item{personItems.length !== 1 ? 's' : ''}</Text>
               </View>

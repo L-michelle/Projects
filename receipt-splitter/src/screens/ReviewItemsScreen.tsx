@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   View,
   Text,
@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   Image,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -20,6 +22,16 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
   const insets = useSafeAreaInsets();
   const { imageUri, people } = route.params;
   const [items, setItems] = useState<ReceiptItem[]>(route.params.items);
+
+  const scrollRef = useRef<ScrollView>(null);
+  const rowOffsets = useRef<Record<string, number>>({});
+
+  function handleRowFocus(itemId: string) {
+    setTimeout(() => {
+      const y = rowOffsets.current[itemId] ?? 0;
+      scrollRef.current?.scrollTo({ y: Math.max(0, y - 80), animated: true });
+    }, 150);
+  }
 
   function updateItem(updated: ReceiptItem) {
     setItems((prev) => prev.map((i) => (i.id === updated.id ? updated : i)));
@@ -47,8 +59,15 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
   const taxItems = items.filter((i) => i.isTaxOrFee);
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <ScrollView
+        ref={scrollRef}
+        contentContainerStyle={styles.content}
+        keyboardShouldPersistTaps="handled"
+      >
         <Image source={{ uri: imageUri }} style={styles.thumb} resizeMode="cover" />
 
         <View style={styles.tipBox}>
@@ -65,14 +84,34 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
           <Text style={styles.emptyNote}>No menu items detected. Add them manually below.</Text>
         )}
         {menuItems.map((item) => (
-          <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
+          <View
+            key={item.id}
+            onLayout={(e) => { rowOffsets.current[item.id] = e.nativeEvent.layout.y; }}
+          >
+            <ReceiptItemRow
+              item={item}
+              onChange={updateItem}
+              onDelete={deleteItem}
+              onFocus={() => handleRowFocus(item.id)}
+            />
+          </View>
         ))}
 
         {taxItems.length > 0 && (
           <>
             <Text style={styles.sectionLabel}>Taxes &amp; Fees — split evenly</Text>
             {taxItems.map((item) => (
-              <ReceiptItemRow key={item.id} item={item} onChange={updateItem} onDelete={deleteItem} />
+              <View
+                key={item.id}
+                onLayout={(e) => { rowOffsets.current[item.id] = e.nativeEvent.layout.y; }}
+              >
+                <ReceiptItemRow
+                  item={item}
+                  onChange={updateItem}
+                  onDelete={deleteItem}
+                  onFocus={() => handleRowFocus(item.id)}
+                />
+              </View>
             ))}
           </>
         )}
@@ -89,7 +128,7 @@ export default function ReviewItemsScreen({ navigation, route }: Props) {
       >
         <Text style={styles.fabText}>Assign Items →</Text>
       </TouchableOpacity>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

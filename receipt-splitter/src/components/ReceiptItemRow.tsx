@@ -6,9 +6,10 @@ type Props = {
   item: ReceiptItem;
   onChange: (updated: ReceiptItem) => void;
   onDelete: (id: string) => void;
+  onFocus?: () => void;
 };
 
-export default function ReceiptItemRow({ item, onChange, onDelete }: Props) {
+export default function ReceiptItemRow({ item, onChange, onDelete, onFocus }: Props) {
   // Keep price as a string while editing so decimals like "14." don't get swallowed
   const [priceText, setPriceText] = useState(item.price > 0 ? item.price.toFixed(2) : '');
 
@@ -25,6 +26,7 @@ export default function ReceiptItemRow({ item, onChange, onDelete }: Props) {
         onChangeText={(text) => onChange({ ...item, name: text })}
         placeholder="Item name"
         placeholderTextColor="#aaa"
+        onFocus={onFocus}
       />
       <TextInput
         style={styles.priceInput}
@@ -35,6 +37,7 @@ export default function ReceiptItemRow({ item, onChange, onDelete }: Props) {
         placeholder="0.00"
         placeholderTextColor="#aaa"
         keyboardType="decimal-pad"
+        onFocus={onFocus}
       />
       <View style={styles.taxToggle}>
         <Text style={styles.taxLabel}>Tax/Fee</Text>
